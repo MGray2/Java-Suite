@@ -15,8 +15,8 @@ public class JavaSuite {
 
         // Get the current time
         LocalTime currentTime = LocalTime.now();
-        LocalTime evening = LocalTime.parse("18:00:00");
-        LocalTime morning = LocalTime.parse("06:00:00");
+        LocalTime evening = LocalTime.parse("20:00:00");
+        LocalTime morning = LocalTime.parse("08:00:00");
 
         JLabel title = new JLabel("Java Suite"); // the title
         title.setFont(title.getFont().deriveFont(30f));
