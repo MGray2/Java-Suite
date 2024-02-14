@@ -17,11 +17,20 @@ public class JavaSuite {
         LocalTime currentTime = LocalTime.now();
         LocalTime evening = LocalTime.parse("18:00:00");
         LocalTime morning = LocalTime.parse("06:00:00");
+
+        JLabel title = new JLabel("Java Suite"); // the title
+        title.setFont(title.getFont().deriveFont(30f));
+
         if (currentTime.isAfter(evening) || currentTime.isBefore(morning)) {
-            frame.getContentPane().setBackground(Color.black);
+            frame.getContentPane().setBackground(new Color(28, 28, 28));
+            title.setForeground(Color.white);
         } else {
             frame.getContentPane().setBackground(Color.white);
+            title.setForeground(Color.black);
         }
+        frame.add(title);
+
+
 
     }
 }
