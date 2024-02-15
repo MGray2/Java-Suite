@@ -4,9 +4,10 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.Scanner;
 
-// not tested, allegedly returns true if website is accessible, false otherwise
+
 public class SiteChecker {
-    public static boolean isSiteUp(URL site) {
+
+    private static boolean checkSite(URL site) {
         try {
             HttpURLConnection conn = (HttpURLConnection) site.openConnection();
             conn.getContent();
@@ -18,21 +19,25 @@ public class SiteChecker {
             return false;
         }
     }
-}
 
+    public static String isSiteUp(String link) {
+        try {
+            URL url = new URL(link);
+            return checkSite(url) ? "Website is Online" : "Website is Offline";
+
+        } catch (Exception e) {
+            System.err.println("Invalid Url");
+            return "";
+        }
+    }
+}
 class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         try (scanner) {
             System.out.println("Enter url here");
-            String link = scanner.nextLine();
-            URL url = new URL(link);
-            boolean available = SiteChecker.isSiteUp(url);
-            if (available) {
-                System.out.println("Website is online.");
-            } else {
-                System.out.println("Website is Offline.");
-            }
+            System.out.println(SiteChecker.isSiteUp(scanner.nextLine()));
+
         } catch (Exception e) {
             System.err.println("Invalid Url");
         }
